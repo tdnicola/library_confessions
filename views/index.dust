@@ -1,0 +1,81 @@
+{>"layout" /}
+
+{<body}
+    <button type='button' class="btn btn-primary btn-block" data-toggle='modal' data-target='#formModal'>
+        Add your story
+    </button>
+
+    <br>
+    {#library}
+        <div class='well'>
+            <h4>{title}
+                <button class='btn btn-default pull-right' 
+                data-toggle="collapse" 
+                href="#library_{id}" 
+                role="button" 
+                aria-expanded="false" 
+                aria-controls="library_{id}">
+                    <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                </button>
+            </h4>
+
+            <div class="collapse " id="library_{id}">
+                <br>
+                <p class='quote'></p>
+                <br>
+
+                <p> <strong>State: </strong>{state}</p>
+                <p> <strong>Story: </strong>{story}</p>
+
+                <br>
+                <hr>
+
+                <button class='btn btn-default edit-story'>
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                </button>
+
+                <button class='btn btn-danger delete-story pull-right'>
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>
+            </div>
+            </div>
+
+    {/library}
+
+
+    <!-- add FormModal -->
+    <div class="modal" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form method='post' action='/add' >
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Story</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class='form-group'>
+                                <label>Story Title</label>
+                                <input type='text' class="form-control" name="title" />
+                            </div>
+
+                            <div class='form-group'>
+                                    <label>What state are you located in?</label>
+                                    <input type='text' class="form-control" name="state" />
+                            </div>
+
+                            <div class='form-group'>
+                                    <label>What story would you like to tell?</label>
+                                    <textarea type='text' class="form-control" name="story"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value='Add Story'/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+{/body}
