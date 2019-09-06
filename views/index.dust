@@ -1,7 +1,7 @@
 {>"layout" /}
 
 {<body}
-    <input type='text' id='searchInput' placeholder='Search titles' class='pull-right' >
+    <input type='text' id='searchInput' placeholder='Search' class='pull-right' >
 
     <img src='imgs/shh.png' />
 

@@ -1,6 +1,11 @@
 body {
     margin-top: 10px;
-    background: #f9f9f9;
+    background-image: url('../imgs/library.jpeg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
 }
 
 body .modal{
@@ -17,6 +22,7 @@ img {
 h1 {
     text-align: center;
     font-family: Baskerville;
+    color: white;
     
 }
 
