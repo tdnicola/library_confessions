@@ -17,14 +17,15 @@ $(document).ready(() => {
         }
     });
 
+//EDIT FUNCTION
     $('.edit-story').click(function() {
         $('#edit-form-title').val($(this).data('title'));
         $('#edit-form-id').val($(this).data('id'));
         $('#edit-form-state').val($(this).data('state'));
         $('#edit-form-story').val($(this).data('story'));
-
     })
 
+//SEARCH FUNCTION
       $("#searchInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $(".well").filter(function() {
@@ -32,20 +33,20 @@ $(document).ready(() => {
         });
       });
     
+//BUTTON API FOR QUOTE
+    $('#pullDown').click(function(e) {
+        e.preventDefault();    
+        $.ajax({
+            url: 'https://api.quotable.io/random',
+            success: function(res) {
+                $('.quote').html(res.content + '<br>' + "Author: " + res.author);
 
-    //     fetch("https://qvoca-bestquotes-v1.p.rapidapi.com/quote", {
-    //     "method": "GET",
-    //     "headers": {
-    //         "x-rapidapi-host": "qvoca-bestquotes-v1.p.rapidapi.com",
-    //         "x-rapidapi-key": "9021c736e0msh8ee4868bd0fc998p1b37c9jsn2729e92e5606"
-    //     }
-    // })
-    // .then(response => {
-    //     console.log(response);
-    // })
-    // .catch(err => {
-    //     console.log(err);
-    // });
-    
+                console.log(res);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    })
 });
 

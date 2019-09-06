@@ -1,9 +1,12 @@
 {>"layout" /}
 
 {<body}
-    <input type='text' id='searchInput' placeholder='Search titles' class='pull-right'>
+    <input type='text' id='searchInput' placeholder='Search titles' class='pull-right' >
+
     <img src='imgs/shh.png' />
+
     <h1>Stories from the nonfiction section...</h1>
+    
     <button type='button' class="btn btn-primary btn-block" data-toggle='modal' data-target='#formModal'>
         Add your story
     </button>
@@ -13,6 +16,7 @@
         <div class='well' id='search'>
             <h4>{title}
                 <button class='btn btn-default pull-right' 
+                id="pullDown"
                 data-toggle="collapse" 
                 href="#library_{id}" 
                 role="button" 
@@ -24,7 +28,6 @@
 
             <div class="collapse " id="library_{id}">
                 <br>
-                <p class='quote'></p>
                 <br>
 
                 <p> <strong>State: </strong>{state}</p>
@@ -32,6 +35,8 @@
 
                 <br>
                 <hr>
+
+                <p class='quote'></p>
 
                 <button class='btn btn-default edit-story'
                     data-toggle='modal' 
