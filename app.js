@@ -6,6 +6,7 @@ var express = require('express'),
     { Pool }  = require('pg'),
     app = express();
 
+
 const {connectionString} = require('./config.json');
 
 app.engine('dust', cons.dust);
@@ -25,7 +26,7 @@ const pool = new Pool({
 
 app.get('/', ((req, res) => {
     pool.connect((err, client, done) => {
-        if (err) throw err
+        if (err) throw err;
 
         client.query('SELECT * FROM library', (err, result) => {
           if (err) {
@@ -39,7 +40,7 @@ app.get('/', ((req, res) => {
 
 app.post('/add', ((req, res) => {
   pool.connect((err, client, done) => {
-    if (err) throw err
+    if (err) throw err;
 
     client.query('insert into library(title, state, story) values($1, $2, $3)', 
       [req.body.title, req.body.state, req.body.story]);
@@ -50,13 +51,34 @@ app.post('/add', ((req, res) => {
   })
 );
 
-app.delete('/delete', ((req, res) => {
+app.delete('/delete/:id', ((req, res) => {
+    pool.connect((err, client, done) => {
+      if (err) throw err;
+
+      client.query('delete from library where id = $1', 
+        [req.params.id]);
+
+        done();
+        res.sendStatus(200);
+      });
+}));
+
+app.post('/edit', ((req, res) => {
+  pool.connect((err, client, done) => {
+    if (err) throw err;
+
+    client.query('update library set story = $1, state = $2, title = $3 where id = $4', 
+      [ req.body.story, req.body.state, req.body.title, req.body.id ]);
+
+      done();
+      res.redirect('/');
+    });
 
 }))
 
 //listening
 app.listen(process.env.PORT || 3000, (() => {
     console.log('Server connected')
-})) 
+}));
 
 

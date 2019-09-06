@@ -11,12 +11,13 @@
   "dependencies": {
     "body-parser": "*",
     "consolidate": "*",
+    "cors": "^2.8.5",
     "dust": "*",
     "dustjs-helpers": "*",
     "dustjs-linkedin": "*",
+    "eslint-plugin-class-property": "^1.1.0",
     "express": "*",
-    "pg": "*",
-    "eslint-plugin-class-property": "^1.1.0"
+    "pg": "*"
   },
   "devDependencies": {
     "eslint": "^6.3.0",
