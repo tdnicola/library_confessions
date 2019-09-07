@@ -28,25 +28,25 @@ $(document).ready(() => {
 //SEARCH FUNCTION
       $("#searchInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
-        $(".well").filter(function() {
+        $(".card").filter(function() {
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });
     
 //BUTTON API FOR QUOTE
-    $('#pullDown').click(function(e) {
-        e.preventDefault();    
-        $.ajax({
-            url: 'https://api.quotable.io/random',
-            success: function(res) {
-                $('.quote').html(res.content + '<br>' + "Author: " + res.author);
+$('#pullDown').click(function(e) {
+    e.preventDefault();    
+    $.ajax({
+        url: 'https://api.quotable.io/random',
+        success: function(res) {
+            console.log(res);
+            $('.quote').html('"' + res.content + '"' + '<br>' + "Author: " + res.author);
 
-                console.log(res);
-            },
-            error: function(err) {
-                console.log(err);
-            }
-        });
-    })
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
+})
+
 });
-

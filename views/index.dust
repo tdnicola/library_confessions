@@ -1,7 +1,7 @@
 {>"layout" /}
 
 {<body}
-    <input type='text' id='searchInput' placeholder='Search' class='pull-right' >
+    <input type='text' id='searchInput' placeholder='Search' class='float-right' >
 
     <img src='imgs/shh.png' />
 
@@ -13,16 +13,16 @@
 
     <br>
     {#library}
-        <div class='well' id='search'>
+        <div class='card card-body bg-light' id='search'>
             <h4>{title}
                 <button class='btn btn-default pull-right' 
-                id="pullDown"
+                
                 data-toggle="collapse" 
                 href="#library_{id}" 
                 role="button" 
                 aria-expanded="false" 
                 aria-controls="library_{id}">
-                    <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                <i class="fas fa-angle-down float-right"id="pullDown"></i>
                 </button>
             </h4>
 
@@ -38,19 +38,19 @@
 
                 <p class='quote'></p>
 
-                <button class='btn btn-default edit-story'
+                <button class='btn btn-default edit-story float-left'
                     data-toggle='modal' 
                     data-target='#editFormModal' 
                     data-id='{id}' 
                     data-title='{title}' 
                     data-story='{story}'
                     data-state='{state}'>
-                    <span class="glyphicon glyphicon-edit" aria-hidden="true">
+                    <i class="far fa-edit"></i>
                     </span>
                 </button>
 
-                <button class='btn btn-danger pull-right delete-story' data-id='{id}'>
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                <button class='btn btn-danger float-right delete-story' data-id='{id}'>
+                    <i class="far fa-trash-alt"></i>
                 </button>
             </div>
         </div>
@@ -59,7 +59,7 @@
 
 
     <!-- add FormModal -->
-    <div class="modal" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <form method='post' action='/add' >
