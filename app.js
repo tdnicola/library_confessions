@@ -28,7 +28,7 @@ app.get('/', ((req, res) => {
     pool.connect((err, client, done) => {
         if (err) throw err;
 
-        client.query('SELECT * FROM library', (err, result) => {
+        client.query('SELECT * FROM library order by id', (err, result) => {
           if (err) {
             console.log(err.stack)
           } 
@@ -42,8 +42,8 @@ app.post('/add', ((req, res) => {
   pool.connect((err, client, done) => {
     if (err) throw err;
 
-    client.query('insert into library(title, state, story) values($1, $2, $3)', 
-      [req.body.title, req.body.state, req.body.story]);
+    client.query('insert into library(title, state, story, likes) values($1, $2, $3, $4)', 
+      [req.body.title, req.body.state, req.body.story, 1]);
 
       done();
       res.redirect('/')
@@ -80,8 +80,8 @@ app.post('/:likes/:id', ((req, res) => {
   pool.connect((err, client, done) => {
     if (err) throw err;
 
-    client.query('update library set likes $1 where id = $2', 
-      [ req.param.likes, req.param.id ]);
+    client.query('update library set likes = $1 where id = $2', 
+      [ req.params.likes, req.params.id ]);
 
       done();
       // res.redirect('/');

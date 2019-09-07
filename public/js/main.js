@@ -51,12 +51,27 @@ $(document).ready(() => {
 
 
 
-    //likeish button
-    $('.likeButton').click(function(e) {
-        if ($('#likePicture').hasClass("true") == false ){
-            var likes = $(".likes").html()
-            $('#likePicture').attr('class','fa fa-heart true');
-            console.log(parseInt(likes) + 1)
+    //like button
+    $('button[data-id]').click(function(e) {
+
+        if ($(this).children().hasClass("true") == false ){
+            var likes = $(this).data('likes') + 1;
+            $(this).children().attr('class','fa fa-heart true');
+            $(this).children().text(likes);
+            var id = $(this).data('id');
+            var url = '/' + likes + '/' + id;
+
+                $.ajax({
+                    url: url,
+                    type: "post",
+                    success: function(res) {
+                        console.log('updated likes')
+                    },
+                    error: function(err) {
+                        console.log(err)
+                    }
+                });
+        
         }
     })
 

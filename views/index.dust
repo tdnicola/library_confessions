@@ -49,9 +49,9 @@
                     </span>
                 </button>
 
-                <button class='btn likeButton'>
-                    <i id='likePicture' value='false' class="fa fa-thumbs-up">
-                        <span class='likes'>{likes}</span>
+                <button class='btn likeButton' data-id='{id}' data-likes='{likes}'>
+                    <i id='likePicture' value='false' class="fa fa-thumbs-up" >
+                        <span class='likes' >{likes}</span>
                     </i>
                 </button>
 
