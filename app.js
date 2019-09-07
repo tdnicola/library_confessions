@@ -76,6 +76,19 @@ app.post('/edit', ((req, res) => {
 
 }))
 
+app.post('/:likes/:id', ((req, res) => {
+  pool.connect((err, client, done) => {
+    if (err) throw err;
+
+    client.query('update library set likes $1 where id = $2', 
+      [ req.param.likes, req.param.id ]);
+
+      done();
+      // res.redirect('/');
+    });
+
+}))
+
 //listening
 app.listen(process.env.PORT || 3000, (() => {
     console.log('Server connected')

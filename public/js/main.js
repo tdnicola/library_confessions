@@ -34,19 +34,30 @@ $(document).ready(() => {
       });
     
 //BUTTON API FOR QUOTE
-$('#pullDown').click(function(e) {
-    e.preventDefault();    
-    $.ajax({
-        url: 'https://api.quotable.io/random',
-        success: function(res) {
-            console.log(res);
-            $('.quote').html('"' + res.content + '"' + '<br>' + "Author: " + res.author);
+    $('#pullDown').click(function(e) {
+        e.preventDefault();    
+        $.ajax({
+            url: 'https://api.quotable.io/random',
+            success: function(res) {
+                console.log(res);
+                $('.quote').html('"' + res.content + '"' + '<br>' + "Author: " + res.author);
 
-        },
-        error: function(err) {
-            console.log(err);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    })
+
+
+
+    //likeish button
+    $('.likeButton').click(function(e) {
+        if ($('#likePicture').hasClass("true") == false ){
+            var likes = $(".likes").html()
+            $('#likePicture').attr('class','fa fa-heart true');
+            console.log(parseInt(likes) + 1)
         }
-    });
-})
+    })
 
 });

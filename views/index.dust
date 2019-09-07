@@ -49,6 +49,12 @@
                     </span>
                 </button>
 
+                <button class='btn likeButton'>
+                    <i id='likePicture' value='false' class="fa fa-thumbs-up">
+                        <span class='likes'>{likes}</span>
+                    </i>
+                </button>
+
                 <button class='btn btn-danger float-right delete-story' data-id='{id}'>
                     <i class="far fa-trash-alt"></i>
                 </button>
