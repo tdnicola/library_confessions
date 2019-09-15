@@ -50,7 +50,7 @@
                 </button>
 
                 <button class='btn likeButton' data-id='{id}' data-likes='{likes}'>
-                    <i id='likePicture' value='false' class="fa fa-thumbs-up" >
+                    <i id='likePicture' data-id='{id}' value='false' class="fa fa-thumbs-up" >
                         <span class='likes' >{likes}</span>
                     </i>
                 </button>
